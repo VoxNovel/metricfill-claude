@@ -6,7 +6,7 @@
     {
       "name": "metricfill",
       "source": "./plugins/metricfill",
-      "description": "Live social media post metrics from your Metricfill workspace."
+      "description": "Live social media data from your Metricfill workspace: post metrics, creators, comments, transcripts, and more."
     }
   ]
 }

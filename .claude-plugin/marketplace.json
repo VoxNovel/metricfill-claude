@@ -1,0 +1,12 @@
+{
+  "name": "metricfill",
+  "description": "Metricfill plugins for Claude",
+  "owner": { "name": "VoxNovel", "url": "https://metricfill.com" },
+  "plugins": [
+    {
+      "name": "metricfill",
+      "source": "./plugins/metricfill",
+      "description": "Live social media post metrics from your Metricfill workspace."
+    }
+  ]
+}

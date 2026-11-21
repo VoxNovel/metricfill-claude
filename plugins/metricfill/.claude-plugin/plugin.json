@@ -1,0 +1,16 @@
+{
+  "name": "metricfill",
+  "displayName": "Metricfill",
+  "version": "1.1.0",
+  "description": "Live engagement data for social media posts (views, likes, comments, shares, authors, and Reddit comments) from your Metricfill workspace, right in the conversation.",
+  "author": { "name": "VoxNovel", "url": "https://metricfill.com" },
+  "homepage": "https://metricfill.com/claude",
+  "repository": "https://github.com/VoxNovel/metricfill-claude",
+  "license": "MIT",
+  "keywords": ["social media", "engagement", "analytics", "influencer marketing", "campaigns", "reddit"],
+  "icon": "./icon.png",
+  "documentationUrl": "https://metricfill.com/claude",
+  "supportUrl": "https://metricfill.com/claude#support",
+  "privacyPolicyUrl": "https://metricfill.com/privacy",
+  "termsOfServiceUrl": "https://metricfill.com/terms"
+}

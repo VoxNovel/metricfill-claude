@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "metricfill": {
+      "type": "http",
+      "url": "https://metricfill.com/mcp"
+    }
+  }
+}

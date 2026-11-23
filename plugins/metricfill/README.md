@@ -18,7 +18,6 @@ This plugin contains:
 
 - A Metricfill account in an active workspace. Metricfill workspaces are set up
   by Metricfill staff; contact support to get one.
-- Claude access turned on for that workspace by Metricfill staff.
 - Monthly credits on the workspace. Most requests use one credit; failed
   requests and empty pages are free. The few requests that cost more run only
   after you approve the price in the conversation.

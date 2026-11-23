@@ -99,8 +99,6 @@ link-in-bio pages, and more.
 
 Errors from Metricfill end with a code in parentheses. Act on the message:
 
-- `CLAUDE_ACCESS_DISABLED`: Claude access is not turned on for their workspace.
-  Tell them to ask Metricfill support to enable it.
 - `RATE_LIMITED`: wait the number of seconds given, then continue.
 - `INVALID_URL`: ask for the full link to the post.
 - `INVALID_PARAMS` or `UNKNOWN_ENDPOINT`: check the endpoint and parameter
@@ -123,4 +121,4 @@ Errors from Metricfill end with a code in parentheses. Act on the message:
   are as of now.
 - If the person belongs to several workspaces, results come from the one they
   last used on the website unless they name another; `list_workspaces` shows
-  which ones have Claude access.
+  which ones are active.

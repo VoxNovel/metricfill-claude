@@ -44,9 +44,11 @@ metricfill.com.
 | `lookup_post` | Public engagement data for one post URL on TikTok, Instagram, YouTube, X (Twitter), Facebook, Reddit, LinkedIn, Threads, Bluesky, Pinterest, Rumble, Twitch, Spotify, or SoundCloud, plus the post's full record (such as media links and music). Reddit posts include up to 25 top comments. |
 | `list_data_endpoints` | Lists the data Metricfill can fetch (about 190 endpoints) with parameters and prices. Free. |
 | `call_data_endpoint` | Fetches one of them: creator profiles and posts, comments, transcripts, followers, search, hashtags, trending content, ad libraries, shops, and permanent media downloads. |
+| `run_bulk_requests` | Runs up to 500 lookups and data requests at once, as one job you can follow and download in Metricfill. Asks first when it can cost more than 20 credits. |
+| `get_bulk_results` | Reads the results of a bulk request. Free. |
 | `get_workspace_status` | Credits left, monthly allowance, and running lookups. |
 | `list_jobs`, `get_job` | Recent lookups and the status of one lookup. |
-| `list_workspaces` | The workspaces you belong to and whether Claude access is on. |
+| `list_workspaces` | The workspaces you belong to and which are active. |
 | `cancel_job` | Cancels a queued, paused, or running lookup. |
 
 ## Example prompts

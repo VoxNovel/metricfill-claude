@@ -28,6 +28,7 @@ numbers from it. Metricfill retrieves them through its own data access, so:
 | Metrics for one post URL | `lookup_post` |
 | Find a data endpoint (profiles, posts, comments, transcripts, search, ads, ...) | `list_data_endpoints` |
 | Call a data endpoint | `call_data_endpoint` |
+| More than about 3 lookups or requests | `run_bulk_requests`, then `get_bulk_results` |
 | Credits left, allowance, running jobs | `get_workspace_status` |
 | A lookup or job that was still running | `get_job` |
 | Recent jobs | `list_jobs` |
@@ -38,8 +39,8 @@ numbers from it. Metricfill retrieves them through its own data access, so:
 
 1. Pass the post's full URL to `lookup_post` as the person gave it. Metricfill
    detects the platform from the URL; do not rewrite or shorten links.
-2. For several posts, call `lookup_post` once per URL. Independent lookups can
-   run in parallel.
+2. For 2 or 3 posts, call `lookup_post` once per URL. For more, use a bulk
+   request (below).
 3. If a lookup returns a job id instead of data, it is still running. Tell the
    person, then check it with `get_job` before reporting results.
 4. Reddit lookups also return the post's top comments (up to 25, highest score
@@ -68,13 +69,38 @@ link-in-bio pages, and more.
 1. Find the endpoint with `list_data_endpoints`, filtered by `platform` or
    `query` (for example `query: "transcript"`). It is free. Use the parameter
    names exactly as listed.
-2. Call `call_data_endpoint` with the endpoint path and its `params`. The
+2. Call `call_data_endpoint` with the endpoint name and its `params`. The
    result's `data` is the complete response.
 3. For lists, request one page at a time with the `cursor` from the previous
    response, and stop once you have enough to answer.
 4. Use `trim=true` where offered unless the full record is needed. When the
    person wants to keep a post's video or images, `download_media=true` on
    the post endpoint returns permanent copies (this costs more; see Credits).
+
+## Many requests: use a bulk request
+
+For more than about 3 lookups or data requests, use `run_bulk_requests` instead
+of repeating `lookup_post` or `call_data_endpoint`. It runs up to 500 requests
+as one job, about 10 at a time, so it is far faster, and it shows as a single
+job in Metricfill with files to download.
+
+1. Mix anything in `requests`: any endpoint from `list_data_endpoints`, plus
+   `post` with a `url` for post lookups. For one endpoint with many inputs, use
+   `endpoint` + `inputs` (+ `shared_params`). Give it a short `name`.
+2. If it returns `needs_approval`, tell the person the maximum credits and the
+   credits left, and ask. Only if they clearly agree, call again with the same
+   requests and `approved_credits`. Never split a batch to avoid asking.
+3. Read results with `get_bulk_results`. Start with one page of previews to see
+   `available_fields`, then pass `fields` with only the paths you need, so many
+   records fit at once. Continue with `after` until `next_after` is null. Open
+   complete records with `full` and `requests`. Reading is free.
+4. While it runs, you can read finished results or check `get_job`. Tell the
+   person they can follow it, and download a spreadsheet or the full data, on
+   the Jobs page in Metricfill.
+5. Report failed requests and their reasons. Run failed ones again only if the
+   person wants that.
+6. For work in steps, run one batch, pick what matters from its results, then
+   run the next (for example search, then profiles, then recent posts).
 
 ## Credits
 
@@ -88,9 +114,8 @@ link-in-bio pages, and more.
   above 1 credit does not run at first: it returns the price and the credits
   left. Tell the person both and ask. Only if they clearly agree, call again
   with `approved_credits` set to that price.
-- Before more than about 20 lookups or calls at once, call
-  `get_workspace_status`, tell the person how many credits the work will use
-  and how many are left, and confirm before starting.
+- Bulk requests that can cost more than 20 credits ask for approval first. Pass
+  the price on to the person and wait for their answer.
 - A job with status `paused` is waiting for credits. It resumes on its own when
   staff raise the allowance or it resets on the first of the month (UTC). Do
   not retry paused lookups; that would only queue duplicates.
@@ -100,6 +125,7 @@ link-in-bio pages, and more.
 Errors from Metricfill end with a code in parentheses. Act on the message:
 
 - `RATE_LIMITED`: wait the number of seconds given, then continue.
+- `TOO_MANY_REQUESTS`, `TOO_LARGE`: split the bulk request.
 - `INVALID_URL`: ask for the full link to the post.
 - `INVALID_PARAMS` or `UNKNOWN_ENDPOINT`: check the endpoint and parameter
   names with `list_data_endpoints`, then try again.

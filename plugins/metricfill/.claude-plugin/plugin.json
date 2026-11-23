@@ -1,7 +1,7 @@
 {
   "name": "metricfill",
   "displayName": "Metricfill",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Live social media data from your Metricfill workspace, right in the conversation: post engagement, creator profiles and posts, comments, transcripts, search, trending content, ad libraries, and media downloads.",
   "author": { "name": "VoxNovel", "url": "https://metricfill.com" },
   "homepage": "https://metricfill.com/claude",

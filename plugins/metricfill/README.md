@@ -2,8 +2,7 @@
 
 Metricfill gives Claude live public social media data: post engagement (views,
 likes, comments, shares, authors, follower counts), creator profiles and their
-posts, comments, transcripts, search, trending content, ad libraries, and
-permanent media downloads. Paste a link or ask about a post, creator, or
+posts, comments, search, trending content, and ad libraries. Paste a link or ask about a post, creator, or
 campaign, and Claude looks it up through your Metricfill workspace.
 
 This plugin contains:
@@ -41,15 +40,19 @@ metricfill.com.
 
 | Tool | What it does |
 | --- | --- |
-| `lookup_post` | Public engagement data for one post URL on TikTok, Instagram, YouTube, X (Twitter), Facebook, Reddit, LinkedIn, Threads, Bluesky, Pinterest, Rumble, Twitch, Spotify, or SoundCloud, plus the post's full record (such as media links and music). Reddit posts include up to 25 top comments. |
-| `list_data_endpoints` | Lists the data Metricfill can fetch (about 190 endpoints) with parameters and prices. Free. |
-| `call_data_endpoint` | Fetches one of them: creator profiles and posts, comments, transcripts, followers, search, hashtags, trending content, ad libraries, shops, and permanent media downloads. |
+| `lookup_post` | Public engagement data for one post URL on TikTok, Instagram, YouTube, X (Twitter), Facebook, Reddit, LinkedIn, Threads, Bluesky, Pinterest, Rumble, Twitch, Spotify, or SoundCloud. Reddit posts include up to 25 top comments. |
+| `get_comments` | Loads a post's comments and replies on Reddit, TikTok, Instagram, YouTube, or Facebook, using at most 15 credits per post. |
+| `list_data_endpoints` | Lists the data Metricfill can fetch (about 180 endpoints) with parameters and prices. Free. |
+| `call_data_endpoint` | Fetches one of them: creator profiles and posts, followers, search, hashtags, trending content, ad libraries, and shops. |
 | `run_bulk_requests` | Runs up to 500 lookups and data requests at once, as one job you can follow and download in Metricfill. Asks first when it can cost more than 20 credits. |
 | `get_bulk_results` | Reads the results of a bulk request. Free. |
 | `get_workspace_status` | Credits left, monthly allowance, and running lookups. |
 | `list_jobs`, `get_job` | Recent lookups and the status of one lookup. |
 | `list_workspaces` | The workspaces you belong to and which are active. |
 | `cancel_job` | Cancels a queued, paused, or running lookup. |
+
+Video, images, audio, and transcripts are not available yet; they are being
+worked on.
 
 ## Example prompts
 
@@ -61,8 +64,8 @@ metricfill.com.
 - "What are people saying in the comments on this? [Reddit post link]"
   Claude looks up the Reddit post and summarizes its top comments with their
   scores.
-- "Get me the transcript of this YouTube video: [link]"
-  Claude finds the transcript endpoint and returns the transcript.
+- "Get all the comments on this YouTube video and tell me the main themes: [link]"
+  Claude loads the comments and summarizes them.
 - "What has this creator posted lately? @example_creator on TikTok"
   Claude fetches the creator's profile and recent videos.
 - "How many Metricfill credits do we have left this month?"

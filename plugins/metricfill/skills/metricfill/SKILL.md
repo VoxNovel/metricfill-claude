@@ -53,7 +53,10 @@ numbers from it. Metricfill retrieves them through its own data access, so:
    available one or has used 15 credits on that post. It needs no approval.
    Tell the person how many were loaded, and when it stopped at the 15-credit
    limit. The platform's own count can include deleted comments, so a smaller
-   number can still be everything. It works for Reddit, TikTok, Instagram,
+   number can still be everything. Busy posts usually have more than the limit
+   reaches: Reddit gives only about 10 comments per credit after the first
+   page. So say "the first N" or "N of M", never "all", unless `complete` is
+   true. It works for Reddit, TikTok, Instagram,
    YouTube, and Facebook; LinkedIn shows only a preview, in `full_data`. A
    Reddit `lookup_post` also returns the top 25 comments, which is enough for
    the gist of a thread. Read long results with `get_job` and `comments_after`.
